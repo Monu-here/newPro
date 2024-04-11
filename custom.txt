@@ -1,0 +1,7 @@
+1. table 
+    0.user(code)
+    1.item {id , name , (rate decimal 18,2) ,unit} crud
+    2.Parties { id name phone address } crud
+    3.ledger {party_id, title, amount, (item_id=>nullable),rate=>nullable, user_id,device_id, type=>integer 1 = cr 2 DR , remote_id} crud  z    sq45679
+    
+2. 
