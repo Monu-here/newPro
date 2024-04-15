@@ -31,7 +31,7 @@ class admin extends Command
             'name' => $this->argument('name'),
             'email' => $this->argument('email'),
             'password' => bcrypt($this->argument('password')),
-            'token' => Str::random(60), // Generate a random token
+            'token' => Str::random(60),
         ]);
 
         $this->info('Admin user created successfully!');

@@ -11,7 +11,7 @@ class ItemController extends Controller
 {
     public function list(Request $request)
     {
-        return response()->json(Item::all());
+        return response()->json(['sucess'=>'Item List','data'=>Item::all()]);
     }
     public function add(Request $request)
     {
@@ -19,9 +19,9 @@ class ItemController extends Controller
         $item->name = $request->name;
         $item->rate = $request->rate;
         $item->unit = $request->unit;
-        dd($item);
+        // dd($item);
         $item->save();
-        return response()->json(['sucess' => 'Item add sucessfully'], 200);
+        return response()->json(['sucess' => 'Item add sucessfully ', 'item' => $item], 200);
     }
     public function edit(Request $request)
     {
@@ -30,7 +30,7 @@ class ItemController extends Controller
         $item->rate = $request->rate;
         $item->unit = $request->unit;
         $item->save();
-        return response()->json($item);
+        return response()->json(['sucess' => 'Item edit sucessfully ', 'item' => $item], 200);
     }
     public function del(Request $request)
     {
@@ -40,6 +40,7 @@ class ItemController extends Controller
         if (!$item) {
         }
         $item->delete();
+        return response()->json(['sucess' => 'Item Delete Sucessfully','item' => $item], 200);
     }
     public function show(Request $request)
     {
