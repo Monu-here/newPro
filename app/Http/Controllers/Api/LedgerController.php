@@ -46,13 +46,7 @@ class LedgerController extends Controller
         $ledger->decive_id = $request->decive_id;
         $ledger->remote_id = $request->remote_id;
         $ledger->type = $request->type;   // 1 = CR , 2 = DR
-        $users = User::all();
-        $items = Item::all();
-
-        return response()->json([
-            'users' => $users,
-            'items' => $items
-        ]);
+       
         $ledger->save();
         return response()->json(['success' => 'Ledger Edit created', 'data' => $ledger], 200);
     }
@@ -60,10 +54,10 @@ class LedgerController extends Controller
     {
         $id = $request->id;
         $ledger = Ledger::where('id', $id)->first();
-        return response()->json(['error' => 'Item not found'], 404);
+        return response()->json(['error' => 'ledger not found'], 404);
         if (!$ledger) {
         }
         $ledger->delete();
-        return response()->json(['sucess' => 'Ledger Delete Sucessfully', 'item' => $ledger], 200);
+        return response()->json(['sucess' => 'Ledger Delete Sucessfully', 'ledger' => $ledger], 200);
     }
 }
