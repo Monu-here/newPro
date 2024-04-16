@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -24,9 +26,12 @@ class LoginController extends Controller
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        
-        $users = DB::table('users')->pluck('token','email');
-        return response()->json(['sucess '=>"user",'token' => $users]);
+        $user ->update(['token'=>Str::random(60)]);
+
+        // dd($token);
+
+
+        return response()->json(['sucess '=>"user",'data'=>['token' => $user->token]]);
 
     }
 
